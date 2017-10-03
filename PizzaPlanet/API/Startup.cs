@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -28,6 +29,8 @@ namespace API
             services.AddMvc();
             services.AddTransient<IPizzaRepository, PizzaRepository>();
             services.AddTransient<IPizzaServices, PizzaServices>();
+            services.AddDbContext<AppDataContext>(options =>
+                options.UseSqlite("Data Source=../Repositories/PizzaPlanet.db", b => b.MigrationAssembly("API")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
