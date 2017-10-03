@@ -3,7 +3,7 @@ namespace PizzaPlanet.Models.EntityModels
     /// <summary>
     /// Entity model for linking ordered menu items to an order
     /// </summary>
-    public class OrderLinks
+    public class OrderLink
     {
         /// <summary>
         /// Id of the link
