@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using PizzaPlanet.Repositories;
+using PizzaPlanet.Services;
 
 namespace API
 {
@@ -24,6 +26,8 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddTransient<IPizzaRepository, PizzaRepository>();
+            services.AddTransient<IPizzaServices, PizzaServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
